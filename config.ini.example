@@ -1,0 +1,12 @@
+[tuya]
+# Required
+access_id     = your_access_id
+access_secret = your_access_secret
+username      = your_email@example.com
+password      = your_password
+device_id     = your_device_id
+
+# Optional (shown values are the defaults)
+endpoint      = https://openapi.tuyaeu.com
+country_code  = 39
+schema        = smartlife
