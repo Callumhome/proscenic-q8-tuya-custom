@@ -32,8 +32,10 @@ def api_return_to_base():
 # CLI
 # ---------------------------------------------------------------------------
 
+_ROOM_HINT = "  |  ".join(f"{k}={v}" for k, v in RobotService.ROOM_NAMES.items())
+
 COMMANDS = {
-    "clean": f"Clean a room. Usage: clean <room>  |  rooms: {', '.join(RobotService.ROOM_PAYLOAD)}",
+    "clean": f"Clean a room by ID or name. Usage: clean <id|name>  |  {_ROOM_HINT}",
     "stop":  "Return the robot to its base.",
     "help":  "Show this help message.",
     "exit":  "Exit the program.",
@@ -62,7 +64,7 @@ def _handle(line: str) -> bool:
 
     elif cmd == "clean":
         if not args:
-            print(f"Usage: clean <room>  |  rooms: {', '.join(RobotService.ROOM_PAYLOAD)}")
+            print(f"Usage: clean <id|name>  |  {_ROOM_HINT}")
         else:
             response = robot_service.clean_room(args[0])
             print(response)
