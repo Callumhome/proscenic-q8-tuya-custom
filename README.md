@@ -2,6 +2,26 @@
 
 A reverse-engineered controller for the **Proscenic Q8** robot vacuum, built on top of the [Tuya OpenAPI](https://developer.tuya.com/en/docs/cloud). It exposes both a CLI and an HTTP API to send the robot to clean specific map areas (rooms).
 
+## Custom Q8 Mop Mode
+
+This fork includes a custom Mop mode for the Proscenic Q8.
+
+### Kitchen + Hallway Mop
+
+The custom Mop command:
+
+- Enables low water level
+- Switches the Q8 into Mop mode
+- Selects the Kitchen and Hallway partition
+- Starts cleaning
+- Skips the Lounge and Bathroom
+- Returns the Q8 to the charging dock after approximately 23 minutes
+
+This sequence was reverse-engineered and tested using the Smart Life app with the Q8.
+
+The original room-cleaning controls remain available alongside the custom Mop function.
+
+
 ## How it works
 
 The Proscenic Q8 accepts a `command_trans` data point whose value is a base64-encoded binary packet. By reverse-engineering the packets captured from the official SmartLife app, the packet format for single-room cleaning was identified:
